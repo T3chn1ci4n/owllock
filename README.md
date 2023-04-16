@@ -1,4 +1,4 @@
-SSimple Password Manager
+Simple Password Manager
 This is a simple command-line password manager written in Python. It allows users to store and manage passwords for various accounts.
 
 Features
@@ -10,17 +10,14 @@ Passwords are saved in a JSON file
 Installation
 Clone the repository to your local machine:
 
-bash
 Copy code
 git clone https://github.com/<username>/password-manager.git
 Navigate to the project directory:
 
-bash
 Copy code
 cd password-manager
 Run the program:
 
-Copy code
 python password_manager.py
 Usage
 Upon running the program, you will be presented with a menu with several options.
