@@ -16,6 +16,7 @@ git clone https://github.com/<username>/password-manager.git
 Navigate to the project directory:
 cd password-manager
   
+Run pip install -r requriements.txt  
 Run the program:
 python main.py
   
