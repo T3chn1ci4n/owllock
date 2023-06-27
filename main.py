@@ -1,4 +1,3 @@
-# Imported Software
 import json
 import random
 import string
@@ -42,8 +41,7 @@ def generate_password(length):
             any(c.isupper() for c in password) and \
             any(c.isdigit() for c in password) and \
             any(c in string.punctuation for c in password):
-            break
-        
+            break        
     return password
 
 def load_passwords(file_name):
@@ -73,17 +71,17 @@ def save_passwords(passwords, file_name):
 
 def add_account(passwords):
 
-    # Error checking for no input in variable
+    # Error checking for no input in a variable
     while True:
         account_name = input("Enter account name: ")
-        # Error checking for no input in variable
+        # Error checking for no input in a variable
         if account_name == "":
             print("Please enter a valid account name")
         else: 
             break
     account_password = input("Enter account password (leave blank to generate one): ")
 
-    # Will generate password if no input provided
+    # Will generate a password if no input is provided
     if not account_password:
         account_password = generate_password(12)
         print("Generated password:", account_password)
@@ -144,33 +142,37 @@ def main():
         passwords = {}
 
     while True:
-        print(("\n"))
-        print("0. BANNER ( ^ . ^ )")
-        print("1. List accounts")
-        print("2. Add account")
-        print("3. Delete account")
-        print("4. Generate new passwords")
-        print("5. Quit")
+        print("Options")
+        print("#" * 50)
+        print("1. BANNER ( ^ . ^ )")
+        print("2. List accounts")
+        print("3. Add account")
+        print("4. Delete account")
+        print("5. Generate new passwords")
+        print("6. Quit")
         choice = input("\nEnter choice: ")
-        
-        if choice == "0":
+
+        if choice == "1":
             banner()
 
-        elif choice == "1":
+        elif choice == "2":
             print("\nAccounts:")
             for account_name, account_password in passwords.items():
                 print(f"{account_name}: {account_password}")
 
-        elif choice == "2":
-            add_account(passwords)
-
         elif choice == "3":
-            delete_account(passwords)
+            add_account(passwords)
+            save_passwords(passwords, file_name)
 
         elif choice == "4":
-            generate_passwords(passwords)
+            delete_account(passwords)
+            save_passwords(passwords, file_name)
 
         elif choice == "5":
+            generate_passwords(passwords)
+            save_passwords(passwords, file_name)
+
+        elif choice == "6":
             save_passwords(passwords, file_name)
             print("Exiting.")
             break
@@ -180,3 +182,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+           
