@@ -3,9 +3,20 @@ import random
 import string
 import time
 import os
+import sys
+from rich.console import Console
+from time import sleep
+
+console = Console()
+tasks = [f"task {n}" for n in range(1, 2)]
+
+with console.status("[bold green]Booting Up...") as status:
+    while tasks:
+        task = tasks.pop(0)
+        sleep(1)
 
 def banner():
-    owl_art = """
+        owl_art = """
       Welcome to OwlLock
  ___________________________
 |      __                   |
@@ -21,13 +32,7 @@ def banner():
 |    `----'         `----'  |
  \_________________________/
 """
-    # Split the owl art into separate lines
-    owl_lines = owl_art.split("\n")
-
-    # Print each line with a delay of 0.2 seconds between each line
-    for line in owl_lines:
-        print(line)
-        time.sleep(0.2)
+        print(owl_art)
 
 def generate_password(length):
 
@@ -71,21 +76,21 @@ def save_passwords(passwords, file_name):
 
 def add_account(passwords):
 
-    # Error checking for no input in a variable
+    # Error checking for no input in variable
     while True:
         account_name = input("Enter account name: ")
-        # Error checking for no input in a variable
+        # Error checking for no input in variable
         if account_name == "":
             print("Please enter a valid account name")
         else: 
             break
     account_password = input("Enter account password (leave blank to generate one): ")
 
-    # Will generate a password if no input is provided
+    # Will generate password if no input provided
     if not account_password:
-        account_password = generate_password(12)
+        account_password = generate_password(15)
         print("Generated password:", account_password)
-        
+
     passwords[account_name] = account_password
     print("Account added successfully.")
 
@@ -174,12 +179,19 @@ def main():
 
         elif choice == "6":
             save_passwords(passwords, file_name)
-            print("Exiting.")
-            break
+            console = Console()
+            tasks = [f"task {n}" for n in range(1, 2)]
+
+            with console.status("[bold green]Exiting...") as status:
+                while tasks:
+                    task = tasks.pop(0)
+                    sleep(1)
+            exit()
+
 
         else:
             print("Invalid choice.")
 
 if __name__ == '__main__':
     main()
-           
+     
